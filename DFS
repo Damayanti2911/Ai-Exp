@@ -1,0 +1,37 @@
+total_nodes = int(input("Enter total number of nodes in graph: "))
+graph = dict()
+while(total_nodes != 0):
+
+    key = input("Enter nodes: ")
+    values = []
+    n = int(input("Enter number of neighbours to this node: "))
+
+    for i in range(n):
+        v = input("Enter neighbouring node: ")
+        values.append(v)
+
+    graph[key] = values
+    total_nodes -= 1
+
+print(graph)
+
+
+sn = input("Enter the starting node: ")
+
+
+def DFSRecur(sn, visited):
+    
+    visited.append(sn)
+    print(sn, end=' ')
+    
+    for neighbour in graph[sn]:
+        if neighbour not in visited:
+            DFSRecur(neighbour, visited)
+
+def DFS(sn):
+ 
+    visited = []
+    DFSRecur(sn, visited)
+
+
+DFS(sn)
