@@ -1,0 +1,23 @@
+def selection_sort(array,n):
+    for i in range(n):
+        x=i
+        for j in range(i+1,n):
+            if array[j]<array[x]:
+                temp=array[x]
+                array[x]=array[j]
+                array[j]=temp
+    print('selection sort: ',array)
+    
+
+    
+def main():
+    n = int(input('How many no u want in array: '))
+    array=[]
+    for i in range(n):
+        array.append(int(input('Enter no: ')))
+    selection_sort(array,n)
+    if n>=5:
+        print('Top 5 elements in array: ')
+        array.reverse()
+        print(array[0:5])
+main()
