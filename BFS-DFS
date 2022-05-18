@@ -1,0 +1,66 @@
+
+
+# Send the graph and initial node as parameter to bfs function
+def BFS(graph, sn):
+
+    # Mark the initial node as visited and push it into the queue
+    visited = []
+    queue = [sn]
+    while queue:
+        node = queue.pop(0)
+        if node not in visited:
+            visited.append(node)
+            neighbours = graph[node]
+            for x in neighbours:
+                queue.append(x)
+    return visited
+
+#print(BFS(graph, sn))
+def DFSUtil(sn, visited,graph):
+    
+    visited.append(sn)
+    print(sn, end=' ')
+    
+    for neighbour in graph[sn]:
+        if neighbour not in visited:
+            DFSUtil(neighbour, visited,graph)
+
+def DFS(sn,graph):
+ 
+    visited = []
+    DFSUtil(sn, visited,graph)
+    
+def main():
+    total_nodes = int(input("Enter total number of nodes in graph: "))
+    graph = dict()
+    while(total_nodes != 0):
+
+        key = input("Enter nodes: ")
+        values = []
+        n = int(input("Enter number of neighbours to this node: "))
+
+        for i in range(n):
+            v = input("Enter neighbouring node: ")
+            values.append(v)
+
+        graph[key] = values
+        total_nodes -= 1
+
+    print(graph)
+
+    # Initialize the starting node
+    sn = input("Enter the starting node: ")
+    while(True):
+        ch=int(input("\n1: BFS\n2: DFS\n3: EXIT\nEnter your choice = "))
+        if(ch==1):
+            print(BFS(graph,sn));
+            
+        elif(ch==2):
+            print(DFS(sn,graph));
+        elif(ch==3):
+            return False;
+        else:
+            print("\nYou have entered the incorrect choice!\n")
+        
+        
+main()  
